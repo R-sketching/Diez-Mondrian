@@ -30,6 +30,15 @@ h1 {
     color: #fff;
 }
 
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; /* Canvas는 뒤에 위치 */
+}
+
 /* Mood Buttons Styling */
 #mood-options {
     display: flex; 
@@ -42,6 +51,8 @@ h1 {
     position: absolute; 
     top: 0;
     left: 0;
+    transform: translateX(-50%);
+    z-index: 2;
     width: 100%;
 }
 
@@ -141,11 +152,4 @@ h1 {
     100% {
         background-position: 0% 0%, 50% 50%, 100% 100%, 30% 30%, 60% 60%, 80% 80%, 10% 10%;
     }
-}
-
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
 }
