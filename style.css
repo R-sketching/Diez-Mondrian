@@ -1,37 +1,47 @@
 /* Body Styling */
 body {
-    font-family: 'Poppins', sans-serif; /* Using Poppins font for modern design */
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    background: linear-gradient(45deg, #FF6347, #FFEB3B, #00A79D, #F9ED32, #2DE23E); /* Gradient colors */
+    background: linear-gradient(45deg, #FF6347, #FFEB3B, #00A79D, #F9ED32, #2DE23E);
     background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite; /* Background color animation */
+    animation: gradientAnimation 15s ease infinite;
     overflow: hidden;
     position: relative;
+}
+
+/* Title styling */
+h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 50px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
 }
 
 /* Mood Buttons Styling */
 #mood-options {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Buttons in grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
     justify-content: center;
     padding: 0 20px;
     position: fixed;
     bottom: 20px;
     width: 100%;
-    z-index: 10; /* Ensure buttons are above the background and lines */
+    z-index: 10;
+    font-size: 0.9rem;
 }
 
 /* Mood Button Styling */
 .mood-btn {
     padding: 8px 15px;
     font-size: 1rem;
-    background-color: #FF6347; /* Button color */
+    background-color: #FF6347;
     color: white;
     border: none;
     border-radius: 30px;
@@ -40,7 +50,7 @@ body {
 }
 
 .mood-btn:hover {
-    background-color: #FF4500; /* Darker red on hover */
+    background-color: #FF4500;
 }
 
 /* Interactive Area for lines to appear */
@@ -97,7 +107,7 @@ body {
     position: absolute;
     height: 5px;
     background-color: #000;
-    z-index: 2; /* Ensure lines appear above background */
+    z-index: 2;
     animation: lineMovement 3s linear forwards;
 }
 
