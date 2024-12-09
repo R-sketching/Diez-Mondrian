@@ -40,24 +40,29 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 });
 
-const lineThicknesses = [2, 5, 10, 25];
+// Predefined line thickness options
+const lineThicknesses = [2, 5, 10, 20, 40];
 
+// Function to animate a line
 function animateLine(color, startX, startY, endX, endY, lineWidth) {
     let progress = 0; // Progress from 0 to 1
 
     function draw() {
         progress += 0.02; // Increment progress (adjust speed here)
 
+        // Calculate current position based on progress
         const currentX = startX + (endX - startX) * progress;
         const currentY = startY + (endY - startY) * progress;
 
+        // Draw the line
         ctx.strokeStyle = color;
-        ctx.lineWidth = 5;
+        ctx.lineWidth = lineWidth; // Use the selected line thickness
         ctx.beginPath();
         ctx.moveTo(startX, startY);
         ctx.lineTo(currentX, currentY);
         ctx.stroke();
 
+        // Continue the animation if progress is less than 1
         if (progress < 1) {
             requestAnimationFrame(draw);
         }
@@ -72,17 +77,18 @@ function addColor(mood) {
 
     const isHorizontal = Math.random() > 0.5;
 
+    // Randomly select a line thickness from the predefined options
     const randomThickness = lineThicknesses[Math.floor(Math.random() * lineThicknesses.length)];
 
     if (isHorizontal) {
-        // Horizontal line (90 degrees)
+        // Horizontal line
         const startX = 0;
         const startY = Math.random() * canvas.height; // Random vertical position
         const endX = canvas.width;
         const endY = startY;
         animateLine(color, startX, startY, endX, endY, randomThickness);
     } else {
-        // Vertical line (180 degrees)
+        // Vertical line
         const startX = Math.random() * canvas.width; // Random horizontal position
         const startY = 0;
         const endX = startX;
