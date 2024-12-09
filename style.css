@@ -1,0 +1,109 @@
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif; /* Using Poppins font for modern design */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(45deg, #FF6347, #FFEB3B, #00A79D, #F9ED32, #2DE23E); /* Gradient colors */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite; /* Background color animation */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Mood Buttons Styling */
+#mood-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Buttons in grid layout */
+    gap: 10px;
+    justify-content: center;
+    padding: 0 20px;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    z-index: 10; /* Ensure buttons are above the background and lines */
+}
+
+/* Mood Button Styling */
+.mood-btn {
+    padding: 8px 15px;
+    font-size: 1rem;
+    background-color: #FF6347; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.mood-btn:hover {
+    background-color: #FF4500; /* Darker red on hover */
+}
+
+/* Interactive Area for lines to appear */
+#interactive-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Line animations for horizontal movement */
+@keyframes lineMovement {
+    0% {
+        left: -100%;
+        top: 0;
+        opacity: 0;
+    }
+    50% {
+        left: 50%;
+        top: 50%;
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+/* Line animations for vertical movement */
+@keyframes verticalLineMovement {
+    0% {
+        left: 0;
+        top: -100%;
+        opacity: 0;
+    }
+    50% {
+        left: 50%;
+        top: 50%;
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.line {
+    position: absolute;
+    height: 5px;
+    background-color: #000;
+    z-index: 2; /* Ensure lines appear above background */
+    animation: lineMovement 3s linear forwards;
+}
+
+/* Background Animation */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
