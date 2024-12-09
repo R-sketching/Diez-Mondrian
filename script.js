@@ -40,7 +40,7 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 });
 
-function animateLine(color, startX, startY, endX, endY, isHorizontal) {
+function animateLine(color, startX, startY, endX, endY) {
     let progress = 0; // Progress from 0 to 1
 
     function draw() {
@@ -48,8 +48,8 @@ function animateLine(color, startX, startY, endX, endY, isHorizontal) {
 
         if (progress > 1) progress = 1; // Ensure progress doesn't exceed 1
 
-        const currentX = isHorizontal ? startX + (endX - startX) * progress : startX;
-        const currentY = isHorizontal ? startY : startY + (endY - startY) * progress;
+        const currentX = startX + (endX - startX) * progress;
+        const currentY = startY + (endY - startY) * progress;
 
         ctx.strokeStyle = color;
         ctx.lineWidth = 5;
@@ -71,17 +71,20 @@ function addColor(mood) {
     const color = moodColors[mood] || '#9e9e9e'; // Default to grey if mood is not in the list
 
     const isHorizontal = Math.random() > 0.5;
+
     if (isHorizontal) {
+        // Horizontal line (90 degrees)
         const startX = 0;
-        const startY = Math.random() * canvas.height;
+        const startY = Math.random() * canvas.height; // Random vertical position
         const endX = canvas.width;
         const endY = startY;
-        animateLine(color, startX, startY, endX, endY, true);
+        animateLine(color, startX, startY, endX, endY);
     } else {
-        const startX = Math.random() * canvas.width;
+        // Vertical line (180 degrees)
+        const startX = Math.random() * canvas.width; // Random horizontal position
         const startY = 0;
         const endX = startX;
         const endY = canvas.height;
-        animateLine(color, startX, startY, endX, endY, false);
+        animateLine(color, startX, startY, endX, endY);
     }
 }
