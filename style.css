@@ -105,10 +105,9 @@ h1 {
 
 .line {
     position: absolute;
-    height: 5px;
     background-color: #000;
     z-index: 2;
-    animation: lineMovement 3s linear forwards;
+    animation-fill-mode: forwards;
 }
 
 /* Background Animation */
