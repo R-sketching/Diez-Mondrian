@@ -16,7 +16,7 @@ body {
                 radial-gradient(circle, #2B4A00 20%, transparent 70%);
     background-size: 200% 200%, 180% 180%, 220% 220%, 150% 150%, 250% 250%, 170% 170%, 190% 190%, 120% 120%;
     background-position: 0% 0%, 50% 50%, 100% 100%, 30% 30%, 60% 60%, 80% 80%, 10% 10%;
-    animation: rippleEffect 12s ease-in-out infinite;
+    animation: rippleEffect 7s ease-in-out infinite;
     overflow: hidden;
     position: relative;
 }
@@ -25,7 +25,7 @@ body {
 h1 {
     font-size: 1.5rem;
     font-weight: 400;
-    margin-top: 250px;
+    margin-top: 800px;
     font-family: 'Poppins', sans-serif;
     color: #fff;
 }
@@ -48,7 +48,7 @@ h1 {
 .mood-btn {
     padding: 8px 15px;
     font-size: 1rem;
-    background-color: #FF6347;
+    background-color: transparent;
     color: white;
     border: none;
     border-radius: 30px;
@@ -57,7 +57,13 @@ h1 {
 }
 
 .mood-btn:hover {
-    background-color: #FF4500;
+    background-color: #FF8585;
+}
+
+.mood-btn:active {
+    background-color: #FF8585;
+    color: white;
+    opacity: 0.6;
 }
 
 /* Interactive Area for lines to appear */
