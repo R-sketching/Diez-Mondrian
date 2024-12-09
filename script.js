@@ -27,35 +27,34 @@ const moodColors = {
     boredom: '#BDBDBD',
 };
 
-let colors = [];
+// Set up the canvas
+const canvas = document.createElement('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+document.body.appendChild(canvas);
+const ctx = canvas.getContext('2d');
 
+// Ensure canvas resizes with the window
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Function to draw a line on the canvas
 function addColor(mood) {
     const color = moodColors[mood] || '#9e9e9e'; // Default to grey if mood is not in the list
-    colors.push(color);
 
-    const interactiveArea = document.getElementById('interactive-area');
-    const line = document.createElement('div');
-    line.classList.add('line');
-    line.style.backgroundColor = color;
+    // Generate random start and end points
+    const startX = Math.random() * canvas.width;
+    const startY = Math.random() * canvas.height;
+    const endX = Math.random() > 0.5 ? startX : Math.random() * canvas.width;
+    const endY = Math.random() > 0.5 ? startY : Math.random() * canvas.height;
 
-    // Set random position for the line
-    const randomTop = Math.random() * 100;
-    const randomLeft = Math.random() * 100;
-
-    line.style.top = `${randomTop}%`;
-    line.style.left = `${randomLeft}%`;
-
-    // Randomly choose horizontal or vertical direction for the line
-    const randomDirection = Math.random() > 0.5 ? 'horizontal' : 'vertical';
-    if (randomDirection === 'horizontal') {
-        line.style.width = '100vw';
-        line.style.height = '5px';
-        line.style.animation = 'lineMovement 3s linear forwards';
-    } else {
-        line.style.width = '5px';
-        line.style.height = '100vh';
-        line.style.animation = 'verticalLineMovement 3s linear forwards';
-    }
-
-    interactiveArea.appendChild(line);
+    // Draw the line
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(endX, endY);
+    ctx.stroke();
 }
