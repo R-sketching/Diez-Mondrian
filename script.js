@@ -40,13 +40,13 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 });
 
-function animateLine(color, startX, startY, endX, endY) {
+const lineThicknesses = [2, 5, 10, 25];
+
+function animateLine(color, startX, startY, endX, endY, lineWidth) {
     let progress = 0; // Progress from 0 to 1
 
     function draw() {
         progress += 0.02; // Increment progress (adjust speed here)
-
-        if (progress > 1) progress = 1; // Ensure progress doesn't exceed 1
 
         const currentX = startX + (endX - startX) * progress;
         const currentY = startY + (endY - startY) * progress;
@@ -72,19 +72,21 @@ function addColor(mood) {
 
     const isHorizontal = Math.random() > 0.5;
 
+    const randomThickness = lineThicknesses[Math.floor(Math.random() * lineThicknesses.length)];
+
     if (isHorizontal) {
         // Horizontal line (90 degrees)
         const startX = 0;
         const startY = Math.random() * canvas.height; // Random vertical position
         const endX = canvas.width;
         const endY = startY;
-        animateLine(color, startX, startY, endX, endY);
+        animateLine(color, startX, startY, endX, endY, randomThickness);
     } else {
         // Vertical line (180 degrees)
         const startX = Math.random() * canvas.width; // Random horizontal position
         const startY = 0;
         const endX = startX;
         const endY = canvas.height;
-        animateLine(color, startX, startY, endX, endY);
+        animateLine(color, startX, startY, endX, endY, randomThickness);
     }
 }
