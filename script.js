@@ -40,21 +40,48 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 });
 
-// Function to draw a line on the canvas
+function animateLine(color, startX, startY, endX, endY, isHorizontal) {
+    let progress = 0; // Progress from 0 to 1
+
+    function draw() {
+        progress += 0.02; // Increment progress (adjust speed here)
+
+        if (progress > 1) progress = 1; // Ensure progress doesn't exceed 1
+
+        const currentX = isHorizontal ? startX + (endX - startX) * progress : startX;
+        const currentY = isHorizontal ? startY : startY + (endY - startY) * progress;
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(currentX, currentY);
+        ctx.stroke();
+
+        if (progress < 1) {
+            requestAnimationFrame(draw);
+        }
+    }
+
+    draw();
+}
+
+// Function to draw a new line
 function addColor(mood) {
     const color = moodColors[mood] || '#9e9e9e'; // Default to grey if mood is not in the list
 
-    // Generate random start and end points
-    const startX = Math.random() * canvas.width;
-    const startY = Math.random() * canvas.height;
-    const endX = Math.random() > 0.5 ? startX : Math.random() * canvas.width;
-    const endY = Math.random() > 0.5 ? startY : Math.random() * canvas.height;
-
-    // Draw the line
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 5;
-    ctx.beginPath();
-    ctx.moveTo(startX, startY);
-    ctx.lineTo(endX, endY);
-    ctx.stroke();
+    const isHorizontal = Math.random() > 0.5;
+    if (isHorizontal) {
+        const startX = 0;
+        const startY = Math.random() * canvas.height;
+        const endX = canvas.width;
+        const endY = startY;
+        animateLine(color, startX, startY, endX, endY, true);
+    } else {
+        const startX = Math.random() * canvas.width;
+        const startY = 0;
+        const endX = startX;
+        const endY = canvas.height;
+        animateLine(color, startX, startY, endX, endY, false);
+    }
 }
