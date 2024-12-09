@@ -8,8 +8,8 @@ body {
     flex-direction: column;
     height: 100vh;
     background: linear-gradient(40deg, #FF6347, #FFEB3B, #00A79D, #FFA4A4, #86D5E0, #2B4A00, #B4A0F9);
-    background-size: 200% 200%;
-    animation: gradientAnimation 5s ease infinite;
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease-in-out infinite;
     overflow: hidden;
     position: relative;
 }
@@ -117,6 +117,24 @@ h1 {
     50% { background-position: 100% 50%; }
     75% { background-position: 50% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+@keyframes waterRipple {
+    0% {
+        background-position: 0% 0%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    75% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
 }
 
 canvas {
