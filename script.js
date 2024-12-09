@@ -1,31 +1,30 @@
-// Color mapping for each emotion
 const moodColors = {
-    calm: '#9F9F00',        // Calm
-    grounded: '#2B4A00',    // Grounded
-    anger: '#ED1C24',       // Anger
-    sadness: '#BE1E2D',     // Sadness
-    excited: '#FF8500',     // Excitement
-    peaceful: '#00A79D',    // Peaceful
-    confidence: '#343A82',  // Confidence
-    happiness: '#2DE23E',   // Happiness
-    love: '#FF4580',        // Love
-    affection: '#FFBBD8',   // Affection
-    serenity: '#86D5E0',    // Serenity
-    mystery: '#000F8E',     // Mystery
-    nostalgia: '#873304',   // Nostalgia
-    creativity: '#B4A0F9',  // Creativity
-    joy: '#F9ED32',         // Joy
-    hope: '#FFD658',        // Hope
-    relaxation: '#FFFBB7',  // Relaxation
-    indifference: '#6D6E71',// Indifference
-    neutral: '#939598',     // Neutral
-    fear: '#231F20',        // Fear
-    purity: '#FFFFFF',      // Purity
-    motivation: '#A5D500',  // Motivation
-    guilt: '#FFA4A4',        // Guilt
-    confusion: '#8E44AD',   // Confusion
-    embarrassment: '#FF6347', // Embarrassment
-    boredom: '#BDBDBD'      // Boredom
+    calm: '#9F9F00',
+    grounded: '#2B4A00',
+    anger: '#ED1C24',
+    sadness: '#BE1E2D',
+    excited: '#FF8500',
+    peaceful: '#00A79D',
+    confidence: '#343A82',
+    happiness: '#2DE23E',
+    love: '#FF4580',
+    affection: '#FFBBD8',
+    serenity: '#86D5E0',
+    mystery: '#000F8E',
+    nostalgia: '#873304',
+    creativity: '#B4A0F9',
+    joy: '#F9ED32',
+    hope: '#FFD658',
+    relaxation: '#FFFBB7',
+    indifference: '#6D6E71',
+    neutral: '#939598',
+    fear: '#231F20',
+    purity: '#FFFFFF',
+    motivation: '#A5D500',
+    guilt: '#FFA4A4',
+    confusion: '#8E44AD',
+    embarrassment: '#FF6347',
+    boredom: '#BDBDBD',
 };
 
 let colors = [];
@@ -33,33 +32,36 @@ let colors = [];
 // Function to add color based on the selected mood
 function addColor(mood) {
     const color = moodColors[mood] || '#9e9e9e'; // Default to grey if mood is not in the list
-    colors.push(color); // Add color to the colors array
+    colors.push(color);
 
-    // Create a line element for the color and animate it
     const interactiveArea = document.getElementById('interactive-area');
     const line = document.createElement('div');
     line.classList.add('line');
-    line.style.backgroundColor = color; // Set the line color based on the selected mood
+    line.style.backgroundColor = color;
 
-    // Add line to the interactive area
-    interactiveArea.appendChild(line);
-
-    // Set random position for the line (position the line randomly)
+    // Set random position for the line
     const randomTop = Math.random() * 100;
     const randomLeft = Math.random() * 100;
 
-    line.style.top = `${randomTop}%`;   // Random top position
-    line.style.left = `${randomLeft}%`; // Random left position
+    line.style.top = `${randomTop}%`;
+    line.style.left = `${randomLeft}%`;
 
     // Randomly choose horizontal or vertical direction for the line
     const randomDirection = Math.random() > 0.5 ? 'horizontal' : 'vertical';
     if (randomDirection === 'horizontal') {
-        line.style.animation = 'lineMovement 3s linear forwards'; // Horizontal movement
+        line.style.width = '100vw';
+        line.style.height = '5px';
+        line.style.animation = 'lineMovement 3s linear forwards';
     } else {
-        line.style.animation = 'verticalLineMovement 3s linear forwards'; // Vertical movement
+        line.style.width = '5px';
+        line.style.height = '100vh';
+        line.style.animation = 'verticalLineMovement 3s linear forwards';
     }
 
-    // Darken background slightly as lines are added
-    const background = document.querySelector('body');
-    background.style.backgroundColor = 'rgba(0, 0, 0, 0.1)'; // Slight darkening effect
+    interactiveArea.appendChild(line);
+
+    // Remove the line after animation to avoid memory leaks
+    setTimeout(() => {
+        interactiveArea.removeChild(line);
+    }, 3000);
 }
