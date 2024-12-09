@@ -1,3 +1,4 @@
+// Color mapping for each emotion
 const moodColors = {
     calm: '#9F9F00',
     grounded: '#2B4A00',
@@ -40,23 +41,20 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 });
 
-// Predefined line thickness options
-const lineThicknesses = [2, 5, 10, 20, 40];
-
 // Function to animate a line
-function animateLine(color, startX, startY, endX, endY, lineWidth) {
+function animateLine(color, startX, startY, endX, endY) {
     let progress = 0; // Progress from 0 to 1
 
     function draw() {
-        progress += 0.02; // Increment progress (adjust speed here)
+        progress += 0.01; // Increment progress (adjust speed here)
 
         // Calculate current position based on progress
         const currentX = startX + (endX - startX) * progress;
         const currentY = startY + (endY - startY) * progress;
 
-        // Draw the line
+        // Clear the line path to animate
         ctx.strokeStyle = color;
-        ctx.lineWidth = lineWidth; // Use the selected line thickness
+        ctx.lineWidth = 5;
         ctx.beginPath();
         ctx.moveTo(startX, startY);
         ctx.lineTo(currentX, currentY);
@@ -77,22 +75,19 @@ function addColor(mood) {
 
     const isHorizontal = Math.random() > 0.5;
 
-    // Randomly select a line thickness from the predefined options
-    const randomThickness = lineThicknesses[Math.floor(Math.random() * lineThicknesses.length)];
-
     if (isHorizontal) {
         // Horizontal line
         const startX = 0;
         const startY = Math.random() * canvas.height; // Random vertical position
         const endX = canvas.width;
         const endY = startY;
-        animateLine(color, startX, startY, endX, endY, randomThickness);
+        animateLine(color, startX, startY, endX, endY);
     } else {
         // Vertical line
         const startX = Math.random() * canvas.width; // Random horizontal position
         const startY = 0;
         const endX = startX;
         const endY = canvas.height;
-        animateLine(color, startX, startY, endX, endY, randomThickness);
+        animateLine(color, startX, startY, endX, endY);
     }
 }
