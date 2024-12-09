@@ -49,20 +49,21 @@ h1 {
     padding: 8px 15px;
     font-size: 1rem;
     background-color: transparent;
-    color: white;
+    color: #FFFBB7;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 .mood-btn:hover {
     background-color: #FF8585;
+    color: #000F8E;
 }
 
 .mood-btn:active {
     background-color: #FF8585;
-    color: white;
+    color: #FFFBB7;
     opacity: 0.6;
 }
 
