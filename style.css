@@ -7,9 +7,9 @@ body {
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    background: linear-gradient(0deg, #FF6347, #FFEB3B, #00A79D, #F9ED32, #2DE23E, #FFA4A4, #86D5E0, #2B4A00, #B4A0F9);
+    background: linear-gradient(40deg, #FF6347, #FFEB3B, #00A79D, #F9ED32, #2DE23E, #FFA4A4, #86D5E0, #2B4A00, #B4A0F9);
     background-size: 400% 400%;
-    animation: gradientAnimation 10s linear infinite;
+    animation: gradientAnimation 5s ease infinite;
     overflow: hidden;
     position: relative;
 }
