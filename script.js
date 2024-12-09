@@ -29,7 +29,6 @@ const moodColors = {
 
 let colors = [];
 
-// Function to add color based on the selected mood
 function addColor(mood) {
     const color = moodColors[mood] || '#9e9e9e'; // Default to grey if mood is not in the list
     colors.push(color);
@@ -59,9 +58,4 @@ function addColor(mood) {
     }
 
     interactiveArea.appendChild(line);
-
-    // Remove the line after animation to avoid memory leaks
-    setTimeout(() => {
-        interactiveArea.removeChild(line);
-    }, 3000);
 }
