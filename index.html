@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Art</title>
+    <!-- Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Choose Your Mood</h1>
+    <div id="mood-options">
+        <!-- Buttons for different moods -->
+        <button class="mood-btn" onclick="addColor('calm')">Calm</button>
+        <button class="mood-btn" onclick="addColor('grounded')">Grounded</button>
+        <button class="mood-btn" onclick="addColor('anger')">Anger</button>
+        <button class="mood-btn" onclick="addColor('sadness')">Sadness</button>
+        <button class="mood-btn" onclick="addColor('excited')">Excitement</button>
+        <button class="mood-btn" onclick="addColor('peaceful')">Peaceful</button>
+        <button class="mood-btn" onclick="addColor('confidence')">Confidence</button>
+        <button class="mood-btn" onclick="addColor('happiness')">Happiness</button>
+        <button class="mood-btn" onclick="addColor('love')">Love</button>
+        <button class="mood-btn" onclick="addColor('affection')">Affection</button>
+        <button class="mood-btn" onclick="addColor('serenity')">Serenity</button>
+        <button class="mood-btn" onclick="addColor('mystery')">Mystery</button>
+        <button class="mood-btn" onclick="addColor('nostalgia')">Nostalgia</button>
+        <button class="mood-btn" onclick="addColor('creativity')">Creativity</button>
+        <button class="mood-btn" onclick="addColor('joy')">Joy</button>
+        <button class="mood-btn" onclick="addColor('hope')">Hope</button>
+        <button class="mood-btn" onclick="addColor('relaxation')">Relaxation</button>
+        <button class="mood-btn" onclick="addColor('indifference')">Indifference</button>
+        <button class="mood-btn" onclick="addColor('neutral')">Neutral</button>
+        <button class="mood-btn" onclick="addColor('fear')">Fear</button>
+        <button class="mood-btn" onclick="addColor('purity')">Purity</button>
+        <button class="mood-btn" onclick="addColor('motivation')">Motivation</button>
+        <button class="mood-btn" onclick="addColor('guilt')">Guilt</button>
+        <button class="mood-btn" onclick="addColor('confusion')">Confusion</button>
+        <button class="mood-btn" onclick="addColor('embarrassment')">Embarrassment</button>
+        <button class="mood-btn" onclick="addColor('boredom')">Boredom</button>
+    </div>
+    <div id="interactive-area"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
