@@ -7,9 +7,16 @@ body {
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    background: linear-gradient(40deg, #FF6347, #FFEB3B, #00A79D, #FFA4A4, #86D5E0, #2B4A00, #B4A0F9);
-    background-size: 400% 400%;
-    animation: waterRipple 10s ease-in-out infinite;
+    background: radial-gradient(circle, #FF6347 20%, transparent 70%),
+                radial-gradient(circle, #FFEB3B 20%, transparent 70%),
+                radial-gradient(circle, #00A79D 20%, transparent 70%),
+                radial-gradient(circle, #FFA4A4 20%, transparent 70%),
+                radial-gradient(circle, #86D5E0 20%, transparent 70%),
+                radial-gradient(circle, #B4A0F9 20%, transparent 70%),
+                radial-gradient(circle, #2B4A00 20%, transparent 70%);
+    background-size: 200% 200%, 180% 180%, 220% 220%, 150% 150%, 250% 250%, 170% 170%, 190% 190%, 120% 120%;
+    background-position: 0% 0%, 50% 50%, 100% 100%, 30% 30%, 60% 60%, 80% 80%, 10% 10%;
+    animation: rippleEffect 12s ease-in-out infinite;
     overflow: hidden;
     position: relative;
 }
@@ -18,7 +25,7 @@ body {
 h1 {
     font-size: 1.5rem;
     font-weight: 400;
-    margin-top: 80px;
+    margin-top: 250px;
     font-family: 'Poppins', sans-serif;
     color: #fff;
 }
@@ -110,21 +117,21 @@ h1 {
     animation-fill-mode: forwards;
 }
 
-@keyframes waterRipple {
+@keyframes rippleEffect {
     0% {
-        background-position: 0% 0%;
+        background-position: 0% 0%, 50% 50%, 100% 100%, 30% 30%, 60% 60%, 80% 80%, 10% 10%;
     }
     25% {
-        background-position: 50% 50%;
+        background-position: 20% 20%, 60% 40%, 80% 60%, 40% 20%, 50% 70%, 70% 50%, 30% 30%;
     }
     50% {
-        background-position: 100% 0%;
+        background-position: 40% 40%, 70% 60%, 60% 80%, 20% 40%, 40% 60%, 60% 40%, 50% 50%;
     }
     75% {
-        background-position: 50% 100%;
+        background-position: 60% 60%, 80% 70%, 40% 20%, 60% 80%, 30% 50%, 50% 30%, 70% 70%;
     }
     100% {
-        background-position: 0% 0%;
+        background-position: 0% 0%, 50% 50%, 100% 100%, 30% 30%, 60% 60%, 80% 80%, 10% 10%;
     }
 }
 
