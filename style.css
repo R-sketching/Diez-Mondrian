@@ -56,12 +56,12 @@ h1 {
 }
 
 .mood-btn:hover {
-    background-color: #FF8585;
+    background-color: transparent;
     color: #000F8E;
 }
 
 .mood-btn:active {
-    background-color: #FF8585;
+    background-color: transparent;
     color: #FFFBB7;
     opacity: 0.6;
 }
